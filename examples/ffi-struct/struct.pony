@@ -11,6 +11,7 @@ use "lib:ffi-struct"
 
 use @modify_via_outer[None](s: Outer)
 use @modify_inner[None](s: Inner)
+use @print_outer[None](s: Outer)
 
 // Unlike classes, Pony structs have the same binary layout as C structs and
 // can be transparently used in C functions.
@@ -41,3 +42,5 @@ actor Main
     @modify_inner(s.inner_var)
     env.out.print(s.inner_embed.x.string()) // Prints 5
     env.out.print(s.inner_var.x.string()) // Prints 5
+
+    @print_outer(s)
